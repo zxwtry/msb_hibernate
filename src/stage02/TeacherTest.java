@@ -8,6 +8,7 @@ import org.junit.Test;
 public class TeacherTest {
 	@Test
 	public void teacherTest01() {
+		
 		Teacher teacher01 = new Teacher();
 		teacher01.setId(1);
 		teacher01.setName("teacher01Name");
