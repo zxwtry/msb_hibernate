@@ -22,6 +22,5 @@ public class TeacherTest {
 		session.clear();
 		sessionFactory.close();
 		
-		
 	}
 }

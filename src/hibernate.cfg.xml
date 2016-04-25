@@ -41,6 +41,8 @@
 <mapping resource="com/amigo/pojo/User.hbm.xml"/>
 
 <mapping resource="com/amigo/pojo/Org.hbm.xml"/>
+
 <mapping class="stage02.Teacher"/>
+
     </session-factory>
 </hibernate-configuration>
