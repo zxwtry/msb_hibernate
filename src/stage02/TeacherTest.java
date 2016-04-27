@@ -16,6 +16,10 @@ public class TeacherTest {
 		
 		Configuration configuration = new Configuration();
 		SessionFactory sessionFactory = configuration.configure().buildSessionFactory();
+		
+		
+		
+		
 		Session session = sessionFactory.openSession();
 		session.getTransaction();
 		session.save(teacher01);
