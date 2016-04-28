@@ -17,11 +17,12 @@ public class AccountTest {
 		Configuration configuration = new Configuration().configure();
 		SchemaExport schemaExport = new SchemaExport(configuration);
 		//对生成DDL语句进行格式化
-		schemaExport.setFormat(true);
-		schemaExport.setDelimiter(" ");
-		schemaExport.setOutputFile("account.sql");
+//		schemaExport.setFormat(true);
+//		schemaExport.setDelimiter(" ");
+//		schemaExport.setOutputFile("account.sql");
 		//第一个说明导出的时候采用默认的格式
-		//
 		schemaExport.create(true, true);
+		
+		
 	}
 }
