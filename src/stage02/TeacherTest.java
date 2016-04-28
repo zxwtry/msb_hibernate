@@ -15,11 +15,8 @@ public class TeacherTest {
 		teacher01.setTitle("teacher01Title");
 		
 		Configuration configuration = new Configuration();
+		@SuppressWarnings("deprecation")
 		SessionFactory sessionFactory = configuration.configure().buildSessionFactory();
-		
-		
-		
-		
 		Session session = sessionFactory.openSession();
 		session.getTransaction();
 		session.save(teacher01);

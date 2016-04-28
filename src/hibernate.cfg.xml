@@ -4,45 +4,16 @@
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-
 <session-factory>
-
-<!-- 各属性的配置-->
-
-<!-—为true表示将Hibernate发送给数据库的sql显示出来 -->
-
-<property name="show_sql">true</property>
-
-<!-- SQL方言，这边设定的是MySQL -->
-
-<property name="dialect">net.sf.hibernate.dialect.MySQLDialect</property>
-
-<!-- 一次读的数据库记录数 -->
-
-<property name="jdbc.fetch_size">50</property>
-
-<!-- 设定对数据库进行批量删除 -->
-        <property name="jdbc.batch_size">30</property>
-
-<!—下面为JNDI的配置 -->
-
-<!-- 数据源的名称 -->
-
-<property name="connection.datasource">java:comp/env/jdbc/datasourcename</property>
-
-<!-- Hibernate的连接加载类 -->
-
-<property name="connection.provider_class">net.sf.hibernate.connection.DatasourceConnectionProvider</property>
-
-<property name="dialect">net.sf.hibernate.dialect.SQLServerDialect</property>
-
-<!—映射文件 -->
-
-<mapping resource="com/amigo/pojo/User.hbm.xml"/>
-
-<mapping resource="com/amigo/pojo/Org.hbm.xml"/>
-
-<mapping class="stage02.Teacher"/>
-
-    </session-factory>
+	<!-- 方言 -->
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+	<!-- 驱动 -->
+	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mytest</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">12356</property>
+	<property name="hibernate.show_sql">true</property>
+	<!-- 注册实体的对象关系映射文件 -->
+	<mapping resource="slw01/Account.hbm.xml"/>
+</session-factory>
 </hibernate-configuration>
