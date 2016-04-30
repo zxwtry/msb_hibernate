@@ -19,7 +19,9 @@ public class AccountTest {
 		// test04Delete();
 		// test05Care();
 		// test06FindAll();
-		testHibernateUtilsAdd();
+		// testHibernateUtilsAdd();
+		// test07UseFlush();
+		test07UseFlush2();
 	}
 	
 	@Test
@@ -157,12 +159,31 @@ public class AccountTest {
 		}
 	}
 	
+	public static void test07UseFlush() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		Account account = (Account) session.get(Account.class, 5);
+		account.setName("王武2");
+		System.out.println(account);
+		transaction.commit();
+	}
+	
+	public static void test07UseFlush2() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		Account account = (Account) session.get(Account.class, 5);
+		account.setName("王武3");
+		session.flush();
+		account.setName("王武4");
+		transaction.commit();
+	}
+	
 	public static void testHibernateUtilsAdd() {
 		Session session = HibernateUtils.getSesssion();
 		Transaction transaction = session.beginTransaction();
 		try {
 			Account account = new Account();
-			account.setName("王武");
+			account.setName("张一");
 			account.setScore(99);
 			account.setBirthday(new Date());
 			account.setAge(23);
@@ -174,6 +195,5 @@ public class AccountTest {
 			HibernateUtils.closeSession(session);
 		}
 	}
-	
 	
 }
