@@ -47,4 +47,9 @@ public class Account implements Serializable{
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", name=" + name + ", age=" + age + ", score=" + score + ", birthday=" + birthday
+				+ "]";
+	}
 }

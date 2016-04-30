@@ -13,6 +13,7 @@
 	<property name="hibernate.connection.username">root</property>
 	<property name="hibernate.connection.password">12356</property>
 	<property name="hibernate.show_sql">true</property>
+	<property name="hibernate.hbm2ddl.auto">create|update</property>
 	<!-- 注册实体的对象关系映射文件 -->
 	<mapping resource="slw01/Account.hbm.xml"/>
 </session-factory>
