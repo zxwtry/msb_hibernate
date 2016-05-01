@@ -15,4 +15,7 @@
         <property name="score" type="double"></property>
         <property name="birthday" type="date"></property>
     </class>
+    <query name="queryByMinAge">
+    	<![CDATA[from Account as a where a.age>:minAge]]>
+    </query>
 </hibernate-mapping>

@@ -17,6 +17,10 @@ public class Account implements Serializable{
 	private Date birthday;
 	public Account() {
 	}
+	public Account(String name, int id) {
+		this.name = name;
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}

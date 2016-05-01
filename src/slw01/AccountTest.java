@@ -21,7 +21,20 @@ public class AccountTest {
 		// test06FindAll();
 		// testHibernateUtilsAdd();
 		// test07UseFlush();
-		test07UseFlush2();
+		// test07UseFlush2();
+		// test10GetAndLoad();
+		// test10GetTwoObject();
+		// test11TestUpdate();
+		// test13FindAll();
+		// test13FindAllOnlyOneUnique();
+		// test14();
+		// test14Account();
+		// test15Fuction02();
+		// test15BindArgs2();
+		// test15BindArgs3();
+		// test16Page();
+		// test17Update();
+		test18Query();
 	}
 	
 	@Test
@@ -196,4 +209,263 @@ public class AccountTest {
 		}
 	}
 	
+	public static void test09State() {
+		// 瞬时状态的对象 begin
+		Account account = new Account();
+		account.setName("瞬时状态");
+		account.setAge(100);
+		account.setScore(98);
+		account.setBirthday(new Date());
+		// 瞬时状态的对象 end
+		
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		session.save(account);
+		transaction.commit();
+		
+		// 关闭session
+		HibernateUtils.closeSession(session);
+		
+		System.out.println(account);	// account是脱管对象
+										/*
+										 * 	曾经和session发生过关联
+										 * 	session已经被关闭
+										 * 	现在account就是脱管对象
+										 */
+		
+	}
+	
+	public static void test10GetAndLoad() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+//		Account account1 = (Account)session.get(Account.class, 2);
+//		System.out.println(account1.getName());
+		Account account2 = (Account)session.load(Account.class, 3);
+		System.out.println(account2.getId());
+		transaction.commit();
+	}
+	
+	public static void test10GetTwoObject() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		Account account1 = (Account)session.get(Account.class, 3);
+		Account account2 = (Account)session.get(Account.class, 3);
+		System.out.println(account1);
+		System.out.println(account2);
+		transaction.commit();
+	}
+	
+	public static void test11TestUpdate() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		Account account = (Account)session.get(Account.class, 3);
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+		
+		// 脱管对象
+		account.setAge(99);
+		account.setAge(64);
+		account.setName("使用Update2");
+		Session session2 = HibernateUtils.getSesssion();
+		Transaction transaction2 = session2.beginTransaction();
+		session2.update(account);
+		transaction2.commit();
+		HibernateUtils.closeSession(session2);
+	}
+	
+	public static void test12TestMerge() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		Account account = (Account)session.get(Account.class, 3);
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+		
+		// 脱管对象
+		account.setAge(99);
+		account.setAge(64);
+		account.setName("使用Update2");
+		Session session2 = HibernateUtils.getSesssion();
+		Transaction transaction2 = session2.beginTransaction();
+		session2.merge(account);
+		transaction2.commit();
+		HibernateUtils.closeSession(session2);
+	}
+	
+	public static void test13FindAll() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String sql = "from Account";
+		Query query = session.createQuery(sql);
+		@SuppressWarnings("unchecked")
+		List<Account> list = (List<Account>)query.list();
+		for (Account account : list) {
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	public static void test13FindAllOnlyOneUnique() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String sql = "from Account";
+		Query query = session.createQuery(sql);
+		Account account = (Account) query.setMaxResults(1).uniqueResult();
+		System.out.println(account);
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 投影查询
+	public static void test14() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String sql = "select name,age from Account";
+		Query query = session.createQuery(sql);
+		@SuppressWarnings("unchecked")
+		List<Object[]> objectList = query.list();
+		for (int index = 0; index < objectList.size(); index ++) {
+			Object[] objects = (Object[]) objectList.get(index);
+			System.out.println(objects[0] +"..."+objects[1]);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 投影查询，实例化投影查询结果
+	public static void test14Account() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String sql = "select new Account(name,age) from Account";
+		Query query = session.createQuery(sql);
+		@SuppressWarnings("unchecked")
+		List<Account> objectList = query.list();
+		for (int index = 0; index < objectList.size(); index ++) {
+			Account account = objectList.get(index);
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 调用标准函数upper()
+	public static void test15Fuction01() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String sql = "select upper(name) from Account";
+		@SuppressWarnings("unchecked")
+		List<String> list = session.createQuery(sql).list();
+		for (String string : list) {
+			System.out.println("name : " + string);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 调用标准函数current_date()
+	public static void test15Fuction02() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String hql = "select current_date() from Account";
+		@SuppressWarnings("unchecked")
+		List<Date> list = session.createQuery(hql).list();
+		for (Date date : list) {
+			System.out.println(date);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 参数绑定
+	static void test15BindArgs1() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String hql = "from Account where score>:minScore";
+		@SuppressWarnings("unchecked")
+		List<Account> list = session.createQuery(hql)
+							.setParameter("minScore", 76.0)
+							.list();
+		for (Account account : list) {
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 参数绑定
+	static void test15BindArgs2() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String hql = "from Account where score>:minScore";
+		@SuppressWarnings("unchecked")
+		List<Account> list = session.createQuery(hql)
+							.setDouble("minScore", 76.0)
+							.list();
+		for (Account account : list) {
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 参数绑定
+	static void test15BindArgs3() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String hql = "from Account where score>?";
+		@SuppressWarnings("unchecked")
+		List<Account> list = session.createQuery(hql)
+							.setDouble(0, 76.0)
+							.list();
+		for (Account account : list) {
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 分页查询
+	static void test16Page() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String hql = "from Account";
+		@SuppressWarnings("unchecked")
+		List<Account> list = session.createQuery(hql)
+							.setFirstResult(1)
+							.setMaxResults(4)
+							.list();
+		for (Account account : list) {
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 批量update和delete
+	static void test17Update() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		String hql = "delete from Account where name like :name";
+		Query query = session.createQuery(hql);
+		query.setString("name", "%用%");
+		System.out.println(query.executeUpdate());
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
+	
+	// 命名查询
+	static void test18Query() {
+		Session session = HibernateUtils.getSesssion();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.getNamedQuery("queryByMinAge");
+		query.setInteger("minAge", 25);
+		@SuppressWarnings("unchecked")
+		List<Account> list = query.list();
+		for (int index = 0; index < list.size(); index ++) {
+			Account account = list.get(index);
+			System.out.println(account);
+		}
+		transaction.commit();
+		HibernateUtils.closeSession(session);
+	}
 }
