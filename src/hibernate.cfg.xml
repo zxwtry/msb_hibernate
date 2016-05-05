@@ -28,5 +28,6 @@
 	
 	<!-- 注册实体的对象关系映射文件 -->
 	<mapping resource="slw01/Account.hbm.xml"/>
+	<mapping resource="slw03/Student.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
