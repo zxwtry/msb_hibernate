@@ -14,7 +14,7 @@
 	<property name="hibernate.connection.password">12356</property>
 	<property name="hibernate.show_sql">true</property>
 	<property name="hibernate.format_sql">true</property>
-	<property name="hibernate.hbm2ddl.auto">create|update</property>
+	<property name="hibernate.hbm2ddl.auto">update</property>
 	
 	<!-- 指明C3P0的提供者 -->
 	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>

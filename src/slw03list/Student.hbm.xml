@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<!-- name属性指定类名（全限定名） table指明表名，不指明table数据默认的表名和实体名一致 -->
+    <class name="slw03list.Student" table="stulist_tab"> 
+    	<!-- type指明当前字段的类型    name对应实体中的属性名 -->
+        <id type="integer" name="id">
+        	<!-- 提供ID自增的策略  native会根据数据库自行判断 -->
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string"></property>
+        <!-- set标签中name表示的是实体类中集合的属性名称-->
+        <list name="hobby" table="stulist_hobby">
+        	<!-- key子元素指明当前表的外键列 -->
+        	<key column="stulist_id" foreign-key="stulist_hobby_fk"></key>
+        	<!-- 索引列，指明添加数据的顺序 -->
+        	<index column="position"/>
+       		<!-- element元素是用来保存集合属性中的值 -->
+       		<element column="hobby_name" type="string"></element>
+        </list>
+    </class>
+</hibernate-mapping>
