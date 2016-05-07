@@ -16,7 +16,6 @@
 	<property name="hibernate.format_sql">true</property>
 	<property name="hibernate.hbm2ddl.auto">create|update</property>
 	
-	
 	<!-- 指明C3P0的提供者 -->
 	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 	<!-- 连接池参数的配置 -->
@@ -29,5 +28,6 @@
 	<!-- 注册实体的对象关系映射文件 -->
 	<mapping resource="slw01/Account.hbm.xml"/>
 	<mapping resource="slw03/Student.hbm.xml"/>
+	<mapping resource="slw03bag/Student.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
