@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<class name="slw03bag.Student" table="stubag_tab">
+		<id type="integer" name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="string"></property>
+		<bag name="hobby" table="stubag_hobby">
+			<key column="stubag_id" foreign-key="stubag_hobby_fk"></key>
+			<element column="hobby_name" type="string"></element>
+		</bag>
+	</class>
+</hibernate-mapping>
