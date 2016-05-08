@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<!-- name属性指定类名（全限定名） table指明表名，不指明table数据默认的表名和实体名一致 -->
+    <class name="slw03m2o.Employee" table="stum2o_emp"> 
+    	<!-- type指明当前字段的类型    name对应实体中的属性名 -->
+        <id type="integer" name="id">
+        	<!-- 提供ID自增的策略  native会根据数据库自行判断 -->
+            <generator class="native"/>
+        </id>
+        <property name="empName" type="string"></property>
+   		<property name="hireDate" type="timestamp"/>
+   		<!-- 用many-to-one元素映射多对一关联
+			name属性：指定关联的属性名
+			column属性：指定此关联属性在数据库表中的外键字段名	 -->
+  		<many-to-one name="dept" column="dept_id"/>
+    </class>
+</hibernate-mapping>
