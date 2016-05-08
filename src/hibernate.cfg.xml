@@ -30,5 +30,6 @@
 	<mapping resource="slw03/Student.hbm.xml"/>
 	<mapping resource="slw03bag/Student.hbm.xml"/>
 	<mapping resource="slw03list/Student.hbm.xml"/>
+	<mapping resource="slw03map/Student.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
