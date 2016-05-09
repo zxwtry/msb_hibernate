@@ -33,5 +33,7 @@
 	<mapping resource="slw03map/Student.hbm.xml"/>
 	<mapping resource="slw03m2o/Dept.hbm.xml"/>
 	<mapping resource="slw03m2o/Employee.hbm.xml"/>
+	<mapping resource="slw03o2m/Account.hbm.xml"/>
+	<mapping resource="slw03o2m/Orders.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>

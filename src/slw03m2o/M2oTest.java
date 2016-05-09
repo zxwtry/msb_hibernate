@@ -2,6 +2,7 @@ package slw03m2o;
 
 import java.util.Date;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,7 +22,9 @@ public class M2oTest {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Employee employee = (Employee)session.get(Employee.class, 3);
-		System.out.println(employee.getDept().getDeptName() + employee.getEmpName());
+		// 起到立马加载的作用
+		Hibernate.initialize(employee.getDept());
+//		System.out.println(employee.getDept().getDeptName() + employee.getEmpName());
 		transaction.commit();
 		session.close();
 		sessionFactory.close();
