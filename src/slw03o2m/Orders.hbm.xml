@@ -7,7 +7,7 @@
 		<id type="integer" name="id">
 			<generator class="native"/>
 		</id>
-		<property name="orderName" type="string"></property>
+		<property name="orderNum" type="string"></property>
 		<property name="orderTime" type="timestamp"/>
 	</class>
 </hibernate-mapping>

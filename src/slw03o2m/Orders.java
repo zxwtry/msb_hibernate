@@ -1,6 +1,6 @@
 package slw03o2m;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Orders {
 	private int id;
