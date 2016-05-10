@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<class name="slw032o2m.Orders" table="slw032o2m_order">
+		<id type="integer" name="id">
+			<generator class="native"/>
+		</id>
+		<property name="orderNum" type="string"></property>
+		<property name="orderTime" type="timestamp"/>
+		<!-- 多的一端 -->
+		<many-to-one name="account" column="acc_id"></many-to-one>
+	</class>
+</hibernate-mapping>
