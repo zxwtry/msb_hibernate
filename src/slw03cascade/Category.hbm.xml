@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<class name="slw03cascade.Category" table="slw03cascade_category">
+		<id type="integer" name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="string"></property>
+		<many-to-one name="parent" column="parent_id"></many-to-one>
+		<set name="sons" inverse="true" cascade = "all">
+			<key column="parent_id"></key>
+			<one-to-many class="slw03cascade.Category"/>
+		</set>
+	</class>
+</hibernate-mapping>

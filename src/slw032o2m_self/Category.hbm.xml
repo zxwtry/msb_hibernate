@@ -11,7 +11,7 @@
 		
 		<!-- 多的一端 -->
 		<many-to-one name="parent" column="parent_id"></many-to-one>
-		<set name="sons" inverse="true">
+		<set name="sons" inverse="true" cascade = "all">
 			<key column="parent_id"></key>
 			<one-to-many class="slw032o2m_self.Category"/>
 		</set>

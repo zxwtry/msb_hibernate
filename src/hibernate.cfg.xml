@@ -38,7 +38,8 @@
 	<mapping resource="slw03o2m/Orders.hbm.xml"/>
 	<mapping resource="slw032o2m/Account.hbm.xml"/>
 	<mapping resource="slw032o2m/Orders.hbm.xml"/>
-	-->
 	<mapping resource="slw032o2m_self/Category.hbm.xml"/>
+	-->
+	<mapping resource="slw03cascade/Category.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
