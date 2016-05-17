@@ -39,7 +39,9 @@
 	<mapping resource="slw032o2m/Account.hbm.xml"/>
 	<mapping resource="slw032o2m/Orders.hbm.xml"/>
 	<mapping resource="slw032o2m_self/Category.hbm.xml"/>
-	-->
 	<mapping resource="slw03cascade/Category.hbm.xml"/>
+	-->
+	<mapping resource="slw042o2o/Citizen.hbm.xml"/>
+	<mapping resource="slw042o2o/IDCard.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
