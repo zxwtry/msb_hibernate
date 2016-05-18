@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<class name="slw04m2m.Food" table="slw04m2mfood">
+		<id type="integer" name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="foodName" type="string"></property>
+		<property name="price" type="float"></property>
+		<set name="customs" table="slw04m2mcustom">
+			<key column="food_id"></key>
+			<one-to-many class="slw04m2m.Custom"/>
+		</set>
+		<many-to-one name=""></many-to-one>
+	</class>
+</hibernate-mapping>
