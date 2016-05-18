@@ -1,4 +1,4 @@
-package slw042o2o;
+package slw042o2o_o2o_o2o;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

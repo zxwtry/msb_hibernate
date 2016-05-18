@@ -1,4 +1,4 @@
-package slw042o2o;
+package slw042o2o_m2o_unique;
 
 public class Citizen {
 	private int id;

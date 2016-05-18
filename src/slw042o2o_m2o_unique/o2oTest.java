@@ -1,4 +1,4 @@
-package slw042o2o_key;
+package slw042o2o_m2o_unique;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
