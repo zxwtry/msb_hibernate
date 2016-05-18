@@ -8,6 +8,6 @@
 			<generator class="native"/>
 		</id>
 		<property name="name" type="string"></property>
-		<one-to-one name="idCard"></one-to-one>
+		<many-to-one name="idCard" column="idcard_id" unique="true"></many-to-one>
 	</class>
 </hibernate-mapping>

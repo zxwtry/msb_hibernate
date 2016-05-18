@@ -5,8 +5,11 @@
 <hibernate-mapping auto-import="false">
 	<class name="slw042o2o.IDCard" table="slw042o2oidcard">
 		<id type="integer" name="id">
-			<generator class="native"/>
+			<generator class ="foreign">
+				<param name="property">citizen</param>
+			</generator>
 		</id>
-	<one-to-one name="citizen" property-ref="idCard"></one-to-one>
+		<property name="name" type="string"></property>
+		<one-to-one name="citizen" constrained="true"></one-to-one>
 	</class>
 </hibernate-mapping>
