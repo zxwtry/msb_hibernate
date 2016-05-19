@@ -10,7 +10,7 @@ public class m2mTest {
 	static void test01Init() {
 		Configuration configuration = new Configuration().configure();
 		SchemaExport schemaExport = new SchemaExport(configuration);
-		schemaExport.create(true,true);
+		schemaExport.create(true, true);
 	}
 	static void test02Add() {
 		
