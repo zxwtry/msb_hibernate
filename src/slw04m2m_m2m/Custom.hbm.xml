@@ -3,15 +3,15 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="false">
-	<class name="slw04m2m.Custom" table="slw04m2mcustom">
+	<class name="slw04m2m_m2m.Custom" table="slw04m2m_m2mcustom">
 		<id type="integer" name="id">
 			<generator class="native"></generator>
 		</id>
 		<property name="customName" type="string"></property>
 		<property name="money" type="float"></property>
-		<set name="foods" table="slw04m2mfood">
+		<set name="foods" table="slw04m2m_m2mcustom_food">
 			<key column="custom_id"></key>
-			<many-to-many column="food_id" class="slw04m2m.Food"/>
+			<many-to-many column="food_id" class="slw04m2m_m2m.Food"/>
 		</set>
 	</class>
 </hibernate-mapping>
