@@ -44,8 +44,11 @@
 	<mapping resource="slw042o2o_key/IDCard.hbm.xml"/>
 	<mapping resource="slw042o2o/Citizen.hbm.xml"/>
 	<mapping resource="slw042o2o/IDCard.hbm.xml"/>
-	-->
 	<mapping resource="slw04m2m_m2m/Custom.hbm.xml"/>
 	<mapping resource="slw04m2m_m2m/Food.hbm.xml"/>
+	-->
+	<mapping resource="slw04criteria_qbc/Book.hbm.xml"/>
+	<mapping resource="slw04criteria_qbc/Student.hbm.xml"/>
+	
 </session-factory>
 </hibernate-configuration>
