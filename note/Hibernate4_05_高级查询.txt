@@ -1,0 +1,18 @@
+回顾HQL基本查询
+	where条件字句和绑定查询参数
+	distinct过滤重复值
+	投影查询
+	运算符和操作符
+	聚集函数
+	order by	对结果排序
+	group by	分组
+	having 		组过滤
+	分页查询
+	批量UPDATE和DELETE
+Cirteria Queries
+*标准化查询
+	*通过面向对象化设计，将查询条件封装为一个对象。
+	 它支持在运行时动态生成查询语句
+*主要由一下四部分组成
+	*Criteria接口，一个查询条件存放容器。where id=? and name=?
+		*通过Session的createCriteria(Class PersistentClass)来获取实例。
